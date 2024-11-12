@@ -30,6 +30,13 @@ restaurantRoutes.put('/:id', async (req, res) => {
     res.status(200).json(updatedRestaurant);
 });
 
+restaurantRoutes.delete('/all', async (req, res) => {
+    await Restaurant.destroy({
+        where: {name: 'Test Restaurant'}
+    })
+    res.status(204).send();
+})
+
 restaurantRoutes.delete('/:id', async (req, res) => {
     const id = req.params.id
     await Restaurant.destroy({
